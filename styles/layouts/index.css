@@ -1,8 +1,17 @@
 @import url(../global.css);
 @import url(../components/container.css);
 @import url(../components/header.css);
-@import url(../ui/title.css);    
+@import url(../ui/title.css);
+@import url(../ui/section.css); 
+@import url(../ui/buttons.css);
 
-body {
-    height: 3000px;
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.book-item {
+    display: grid;
+    grid-template-columns: 0.5fr 0.3fr 0.2fr 0.2fr;
 }

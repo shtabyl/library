@@ -1,0 +1,7 @@
+.book-item {
+    display: flex;
+    gap: 2em;
+    padding: 0.55em 0.25em;
+    font-size: var(--fs-300);
+    border-bottom: 1px solid var(--clr-border);
+}

@@ -1,11 +1,14 @@
 .title {
     font-size: var(--fs-600);
     font-weight: 600;
-    padding-block: 0.25em;
+    padding-block: 0.35em;
 }
 .title_main {
     font-size: var(--fs-700);
     font-weight: 700;
-    background-color: blanchedalmond;
-    
+    margin-bottom: 0.45em;
+}
+.book_title {
+    font-size: var(--fs-300);
+    font-weight: 400;
 }
