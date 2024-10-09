@@ -1,0 +1,15 @@
+@import url(./navbar.css);
+
+.header__navbar {
+    position: relative;
+    background-color: #faf4d3;
+    padding-block: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .header__navbar {
+        position: fixed;
+        width: 100%;
+        justify-items: start;
+    }
+}

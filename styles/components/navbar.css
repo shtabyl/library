@@ -1,0 +1,74 @@
+@import url(../ui/social-icons-list.css);
+@import url(./burger.css);
+
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    background-color: turquoise;
+}
+.navbar__menu-list ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.navbar__menu-list {
+    /* height: 100%; */
+    a {
+        text-decoration: none;
+        color: inherit;
+        height: 100%;
+        display: grid;
+        place-content: center;
+    }
+    li {
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    @keyframes left-to-right {
+        0% {
+            transform: translateX(-100vw);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes right-to-left {
+        0% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(-100vw);
+            opacity: 0;
+        }
+    }
+    .navbar__menu-list ul {
+        flex-direction: column;
+    }
+    .navbar {
+        position: absolute;
+        top: 2.75rem;
+        flex-direction: column;
+        width: 100%;
+        padding-block: 1rem;
+        gap: 1rem;
+        height: 50vh;
+        transform: translateX(-100vw);
+        &.active {
+            animation: left-to-right 0.3s linear;
+            transform: translateX(0);
+        }
+        &.hide {
+            animation: right-to-left 0.3s linear;
+            transform: translateX(-100vw);
+        }
+    }
+}

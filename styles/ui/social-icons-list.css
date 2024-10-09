@@ -1,0 +1,18 @@
+.social ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+}
+.social a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: inherit;
+}
+.social li {
+    flex-shrink: 0;
+}
+.social img {
+    height: 1.5rem;
+}
+
+
