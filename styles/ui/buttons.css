@@ -32,3 +32,7 @@
         color: var(--clr-bg);
     }
 }
+.button_remove {
+    display: grid;
+    place-content: center;
+}

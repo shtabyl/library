@@ -6,7 +6,7 @@ input {
     color: var(--clr-bg);
     font-size: var(--fs-300);
 }
-input:focus {
+input:focus:not([type='checkbox']) {
     outline: none;
     box-shadow: 0 0 0 2px rgba(225, 202, 126, 0.956);
 }

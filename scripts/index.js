@@ -27,6 +27,7 @@ function addBookToLibrary(newBook) {
     const newBookRow = document.createElement('section');
     
     newBookRow.classList.add('book-item');
+    newBookRow.setAttribute('data', myLibrary.indexOf(newBook));
     
     for (const property in newBook) {
         
@@ -49,8 +50,15 @@ function addBookToLibrary(newBook) {
             const tableCell = document.createElement('p');
             addTableCell(tableCell);
         }
-        
     }
+
+    const removeBookBtn = document.createElement('a');
+    const xmark = document.createElement('i');
+    removeBookBtn.classList.add('link', 'button_remove');
+    xmark.classList.add('fa-solid', 'fa-xmark');
+    removeBookBtn.appendChild(xmark);
+    removeBookBtn.setAttribute('data', myLibrary.indexOf(newBook));
+    newBookRow.appendChild(removeBookBtn);
     
     bookList.appendChild(newBookRow);
 
@@ -101,4 +109,19 @@ inputFields.forEach((e) => {
             document.querySelector('.form-notification').remove();
         }
     })
+});
+
+const removeBtns = document.querySelectorAll('.button_remove');
+const bookItems = document.querySelectorAll('.book-item');
+
+removeBtns.forEach((item) => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        bookItems.forEach((book) => {
+            if (item.getAttribute('data') === book.getAttribute('data')) {
+                book.remove();
+                return;
+            }
+        });
+    });
 });
