@@ -15,13 +15,29 @@
     <header class="header content-grid">
         <div class="header__container ">
             <h1 class="header__title title title_main">Library</h1>
-            <form action="#" class="header__form form form_new-book">
-                <button class="header__button button">Add new book</button>
-            </form>
+            <button class="header__button button" type="button">Add new book</button>
         </div>
     </header>
     <main class="main">
         <div class="book-list content-grid">
+            <form action="#" class="book-list__form form form_new-book" autofocus="off">
+                <div class="form__input-container">
+                        <p class="form__input-box input-box">
+                            <!-- label.input-box__label[for="new-book_title"] -->
+                            <input type="text" id="new-book_title" name="new-book_title" placeholder="Title" autofocus required>
+                        </p>
+                        <p class="form__input-box input-box">
+                            <input type="text" id="new-book_author" name="new-book_author" placeholder="Author" required>
+                        </p>
+                        <p class="form__input-box input-box">
+                            <input type="number" id="new-book_pages" name="new-book_pages" placeholder="Pages" required>
+                        </p>
+                        <p class="form__input-box input-box">
+                            <input type="text" id="new-book_status" name="new-book_status" placeholder="Status" required>
+                        </p>
+                </div>
+                <button type="submit" class="form__button button button_submit">Add book</button>
+            </form>
             <header class=" book-list__header book-item">
                 <p>Title</p>
                 <p>Author</p>
