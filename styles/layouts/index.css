@@ -4,6 +4,7 @@
 @import url(../ui/title.css);
 @import url(../ui/section.css); 
 @import url(../ui/buttons.css);
+@import url(../ui/links.css);
 
 .header__container {
     display: flex;
@@ -14,4 +15,14 @@
 .book-item {
     display: grid;
     grid-template-columns: 0.5fr 0.3fr 0.2fr 0.2fr;
+}
+.footer {
+    position: absolute;
+    bottom: 1rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+    font-size: var(--fs-200);
+    text-align: center;
+    color: #16dee55c;
 }

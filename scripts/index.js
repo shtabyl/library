@@ -33,9 +33,9 @@ function addBookToLibrary(newBook) {
             tableCell.classList.add(property);
             newBookRow.appendChild(tableCell);
             if (tableCell.textContent === 'false') {
-                tableCell.textContent = 'not read yet';
+                tableCell.textContent = '-';
             } else if (tableCell.textContent === 'true') {
-                tableCell.textContent = '';
+                tableCell.textContent = 'read';
             }
         }
         
