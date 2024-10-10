@@ -1,7 +1,7 @@
 .button {
     background-color: transparent;
     color: inherit;
-    padding: 0.8em 1.7em;
+    padding: 0.9em 1.7em;
     border: 1px solid var(--clr-text);
     text-transform: uppercase;
     border-radius: 3px;

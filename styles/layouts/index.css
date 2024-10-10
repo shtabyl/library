@@ -9,8 +9,14 @@
 @import url(../ui/inputs.css);
 
 .header__container {
+    z-index: 1;
+    background-color: var(--clr-bg);
+    margin-bottom: 0.5em;
+}
+.header__wrapper {
     display: flex;
     justify-content: space-between;
+    background-color: var(--clr-bg);
     align-items: center;
     gap: 1rem;
 }
@@ -20,6 +26,10 @@
 }
 .book-list__form {
     margin-bottom: 0.8em;
+    display: none;
+}
+.book-list-form__button {
+    margin-right: 1em;
 }
 .footer {
     position: absolute;

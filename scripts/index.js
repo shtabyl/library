@@ -1,6 +1,9 @@
 const myLibrary = [];
 const bookList = document.querySelector('.book-list');
-const newBookBtn = document.querySelector('.header__button');
+const showFormBtn = document.querySelector('.header__button');
+const newBookForm = document.querySelector('.book-list__form');
+const addBookBtn = document.querySelector('.book-list-form__button');
+const inputFields = document.querySelectorAll('.new-book-input');
 
 function Book(title, author, pages, read) {
     this.book_title = title;
@@ -15,12 +18,12 @@ function Book(title, author, pages, read) {
 const book1 = new Book('The Mysterious Island', 'J. Verne', 524, true);
 const book2 = new Book('The Art of Loving', 'E. Fromm', 104, true);
 const book3 = new Book('The Brothers Karamazov', 'F. Dostoevsky', 824, false);
+const book4 = new Book('Two lives', 'K. Antarova', 500, false);
 
-myLibrary.push(book1, book2, book3)
+myLibrary.push(book1, book2, book3, book4);
 
 
 function addBookToLibrary(newBook) {
-    // myLibrary.push(newBook);
     const newBookRow = document.createElement('section');
     
     newBookRow.classList.add('book-item');
@@ -32,9 +35,9 @@ function addBookToLibrary(newBook) {
             tableCell.appendChild(textContent);
             tableCell.classList.add(property);
             newBookRow.appendChild(tableCell);
-            if (tableCell.textContent === 'false') {
+            if (tableCell.textContent === 'false' || tableCell.textContent === '' || tableCell.textContent === '-') {
                 tableCell.textContent = '-';
-            } else if (tableCell.textContent === 'true') {
+            } else if (tableCell.textContent === 'true' || tableCell.textContent === 'read') {
                 tableCell.textContent = 'read';
             }
         }
@@ -50,12 +53,52 @@ function addBookToLibrary(newBook) {
     }
     
     bookList.appendChild(newBookRow);
-    
-    
+
 }
 
 myLibrary.forEach((e) => addBookToLibrary(e));
 
-newBookBtn.addEventListener('click', (e) => {
+showFormBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    if (showFormBtn.textContent === "Add new book") {
+        showFormBtn.textContent = "Hide form";
+        newBookForm.style.display = 'block';
+    } else {
+        showFormBtn.textContent = "Add new book";
+        newBookForm.style.display = 'none';
+    }
+});
+
+addBookBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const newBookTitle = document.querySelector('#new-book_title').value;
+    const newBookAuthor = document.querySelector('#new-book_author').value;
+    const newBookPages = document.querySelector('#new-book_pages').value;
+    const newBookStatus = document.querySelector('#new-book_status').value;
+    const newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookStatus);
+    if (newBookTitle === '' || newBookAuthor === '' || newBookPages === '') {
+        if (document.querySelector('.form-notification')) {
+            document.querySelector('.form-notification').remove();
+        }
+        const formNotification = document.createElement('span');
+        const textContent = document.createTextNode('Please fill in all the fields.');
+        formNotification.classList.add('form-notification');
+        formNotification.appendChild(textContent);
+        newBookForm.appendChild(formNotification);
+        return;
+    }
+    if (document.querySelector('.form-notification')) {
+        document.querySelector('.form-notification').remove();
+    }
+    myLibrary.push(newBook);
+    addBookToLibrary(newBook);
+    newBookForm.reset();
+});
+
+inputFields.forEach((e) => {
+    e.addEventListener('focus', () => {
+        if (document.querySelector('.form-notification')) {
+            document.querySelector('.form-notification').remove();
+        }
+    })
 });

@@ -6,7 +6,6 @@
 .title_main {
     font-size: var(--fs-700);
     font-weight: 700;
-    margin-bottom: 0.45em;
 }
 .book_title {
     font-size: var(--fs-300);

@@ -12,31 +12,33 @@
     <title>Library</title>
 </head>
 <body>
-    <header class="header content-grid">
-        <div class="header__container ">
-            <h1 class="header__title title title_main">Library</h1>
-            <button class="header__button button" type="button">Add new book</button>
+    <header class="header content-grid ">
+        <div class="header__container full-width">
+            <div class="header__wrapper">
+                <h1 class="header__title title title_main">Library</h1>
+                <button class="header__button button" type="button">Add new book</button>
+            </div>
         </div>
     </header>
     <main class="main">
         <div class="book-list content-grid">
-            <form action="#" class="book-list__form form form_new-book" autofocus="off">
+            <form action="#" class="book-list__form form form_new-book" autocomplete="off">
                 <div class="form__input-container">
                         <p class="form__input-box input-box">
                             <!-- label.input-box__label[for="new-book_title"] -->
-                            <input type="text" id="new-book_title" name="new-book_title" placeholder="Title" autofocus required>
+                            <input type="text" id="new-book_title" class="new-book-input" name="new-book_title" placeholder="Title" autofocus required>
                         </p>
                         <p class="form__input-box input-box">
-                            <input type="text" id="new-book_author" name="new-book_author" placeholder="Author" required>
+                            <input type="text" id="new-book_author" class="new-book-input" name="new-book_author" placeholder="Author" required>
                         </p>
                         <p class="form__input-box input-box">
-                            <input type="number" id="new-book_pages" name="new-book_pages" placeholder="Pages" required>
+                            <input type="number" id="new-book_pages" class="new-book-input" name="new-book_pages" placeholder="Pages" required>
                         </p>
                         <p class="form__input-box input-box">
-                            <input type="text" id="new-book_status" name="new-book_status" placeholder="Status" required>
+                            <input type="text" id="new-book_status" class="new-book-input" name="new-book_status" placeholder="Status" required>
                         </p>
                 </div>
-                <button type="submit" class="form__button button button_submit">Add book</button>
+                <button type="submit" class="book-list-form__button button button_submit">Add book</button>
             </form>
             <header class=" book-list__header book-item">
                 <p>Title</p>

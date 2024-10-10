@@ -20,11 +20,11 @@
 
     --clr-border: #ffffff1a;
     --clr-text: #e1ca7e;
-    --clr-bg: #0D7377;
+    --clr-bg: #0a6567;
 }
 body {
     font-family: var(--font-family);
-    font-size: var(--fs-400);
+    font-size: var(--fs-300);
     background-color: var(--clr-bg);
     color: var(--clr-text);
     height: 100svh;
