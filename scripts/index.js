@@ -24,6 +24,7 @@ myLibrary.push(book1, book2, book3, book4);
 
 
 function addBookToLibrary(newBook) {
+    myLibrary.push(newBook);
     const newBookRow = document.createElement('section');
     
     newBookRow.classList.add('book-item');

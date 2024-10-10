@@ -15,24 +15,25 @@
         color: hsl(46, 81%, 74%);
         box-shadow: 0 0 0 1px rgba(225, 202, 126, 0.8);
     }
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(225, 202, 126, 0.946);
+    }
 }
 .button_submit {
-    background-color: white;
-    color: var(--clr-bg);
-    border: none;
     padding: 0.9em 1.5em;
     font-weight: 600;
     &:hover {
         box-shadow: 0 0 0 2px rgba(225, 202, 126, 0.946);
-        color: var(--clr-bg);
-    }
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(225, 202, 126, 0.946);
-        color: var(--clr-bg);
     }
 }
+
 .button_remove {
     display: grid;
     place-content: center;
+}
+.button_reset {
+    font-size: var(--fs-300);
+    padding: 0.55em 0.55em;
+
 }

@@ -1,18 +1,39 @@
+
 input {
     width: 100%;
     padding: 0.55em 0.5em;
-    border: none;
+    border: 1px solid var(--clr-text);
     border-radius: 3px;
     color: var(--clr-bg);
     font-size: var(--fs-300);
+    transition: 0.3s;
+    background-color: transparent;
+}
+input[type="checkbox"] {
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid gray;
+    height: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+input[type="checkbox"]:checked {
+    border-color: var(--clr-text);
+    transition: 0.3s;
+}
+input[type="checkbox"]:checked + label.new-book-status__label {
+    color: var(--clr-text);
+    transition: 0.3s;
 }
 input:focus:not([type='checkbox']) {
     outline: none;
     box-shadow: 0 0 0 2px rgba(225, 202, 126, 0.956);
+    transition: 0.3s;
 }
-input:focus:invalid {
-    box-shadow: 0 0 0 2px rgba(225, 202, 126, 0.956);
+input:focus[type="checkbox"] {
+    outline: none;
 }
 input::placeholder {
     font-size: var(--fs-300);
+    color: rgb(170, 170, 170)
 }

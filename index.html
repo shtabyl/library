@@ -35,7 +35,13 @@
                             <input type="number" id="new-book_pages" class="new-book-input" name="new-book_pages" placeholder="Pages" required>
                         </p>
                         <p class="form__input-box input-box">
-                            <input type="text" id="new-book_status" class="new-book-input" name="new-book_status" placeholder="Status" required>
+                            <input type="checkbox" id="new-book_status" class="new-book-input" name="new-book_status" placeholder="Status" required>
+                            <label for="new-book_status" class="new-book-status__label">Read</label>
+                        </p>
+                        <p class="form__input-box input-box input-box_reset">
+                            <button type="reset" class="form__reset-button button button_reset">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
                         </p>
                 </div>
                 <button type="submit" class="book-list-form__button button button_submit">Add book</button>

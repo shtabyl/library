@@ -1,6 +1,30 @@
 .form__input-container {
     display: grid;
-    grid-template-columns: 0.5fr 0.3fr 0.2fr 0.2fr;
+    grid-template-columns: 0.5fr 0.3fr 0.2fr 0.2fr 35px;
     gap: 1em;
     padding-bottom: 1em;
+}
+.input-box:nth-child(4) {
+    position: relative;
+}
+.new-book-status__label {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    bottom: 2px;
+    margin: auto;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    color: rgb(150, 149, 149);
+    transition: 0.3s;
+    &:hover {
+        color: rgb(177, 173, 156);
+        transition: 0.3s;
+    }
+}
+.input-box_reset {
+    justify-self: end;
 }
