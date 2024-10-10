@@ -72,9 +72,11 @@ showFormBtn.addEventListener('click', (e) => {
     if (showFormBtn.textContent === "Add new book") {
         showFormBtn.textContent = "Hide form";
         newBookForm.style.display = 'block';
+        newBookForm.reset();
     } else {
         showFormBtn.textContent = "Add new book";
         newBookForm.style.display = 'none';
+        newBookForm.reset();
     }
 });
 

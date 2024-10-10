@@ -4,8 +4,9 @@ input {
     padding: 0.55em 0.5em;
     border: 1px solid var(--clr-text);
     border-radius: 3px;
-    color: var(--clr-bg);
+    color: var(--clr-text);
     font-size: var(--fs-300);
+    font-weight: 300;
     transition: 0.3s;
     background-color: transparent;
 }
