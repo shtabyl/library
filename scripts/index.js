@@ -4,6 +4,8 @@ const showFormBtn = document.querySelector('.header__button');
 const newBookForm = document.querySelector('.book-list__form');
 const addBookBtn = document.querySelector('.book-list-form__button');
 const inputFields = document.querySelectorAll('.new-book-input');
+let bookItems = document.querySelectorAll('.book-item');
+
 
 function Book(title, author, pages, read) {
     this.book_title = title;
@@ -15,6 +17,7 @@ function Book(title, author, pages, read) {
     // }
 }
 
+
 const book1 = new Book('The Mysterious Island', 'J. Verne', 524, true);
 const book2 = new Book('The Art of Loving', 'E. Fromm', 104, true);
 const book3 = new Book('The Brothers Karamazov', 'F. Dostoevsky', 824, false);
@@ -24,7 +27,7 @@ myLibrary.push(book1, book2, book3, book4);
 
 
 function addBookToLibrary(newBook) {
-    myLibrary.push(newBook);
+    // myLibrary.push(newBook);
     const newBookRow = document.createElement('section');
     
     newBookRow.classList.add('book-item');
@@ -37,9 +40,9 @@ function addBookToLibrary(newBook) {
             tableCell.appendChild(textContent);
             tableCell.classList.add(property);
             newBookRow.appendChild(tableCell);
-            if (tableCell.textContent === 'false' || tableCell.textContent === '' || tableCell.textContent === '-') {
+            if (tableCell.textContent === 'false' || tableCell.textContent === '' || tableCell.textContent === '-' || tableCell.textContent === 'off' || tableCell.textContent === 'off') {
                 tableCell.textContent = '-';
-            } else if (tableCell.textContent === 'true' || tableCell.textContent === 'read') {
+            } else if (tableCell.textContent === 'true' || tableCell.textContent === 'read' || tableCell.textContent === 'on') {
                 tableCell.textContent = 'read';
             }
         }
@@ -63,9 +66,16 @@ function addBookToLibrary(newBook) {
     
     bookList.appendChild(newBookRow);
 
+    bookItems = document.querySelectorAll('.book-item');
+
+    removeBook(removeBookBtn);
+
+
 }
 
+
 myLibrary.forEach((e) => addBookToLibrary(e));
+
 
 showFormBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -87,6 +97,7 @@ addBookBtn.addEventListener('click', (e) => {
     const newBookPages = document.querySelector('#new-book_pages').value;
     const newBookStatus = document.querySelector('#new-book_status').value;
     const newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookStatus);
+
     if (newBookTitle === '' || newBookAuthor === '' || newBookPages === '') {
         if (document.querySelector('.form-notification')) {
             document.querySelector('.form-notification').remove();
@@ -106,6 +117,7 @@ addBookBtn.addEventListener('click', (e) => {
     newBookForm.reset();
 });
 
+
 inputFields.forEach((e) => {
     e.addEventListener('focus', () => {
         if (document.querySelector('.form-notification')) {
@@ -114,17 +126,16 @@ inputFields.forEach((e) => {
     })
 });
 
-const removeBtns = document.querySelectorAll('.button_remove');
-const bookItems = document.querySelectorAll('.book-item');
 
-removeBtns.forEach((item) => {
-    item.addEventListener('click', (e) => {
+function removeBook(removeBookBtn) {
+    removeBookBtn.addEventListener('click', (e) => {
         e.preventDefault();
         bookItems.forEach((book) => {
-            if (item.getAttribute('data') === book.getAttribute('data')) {
+            if (removeBookBtn.getAttribute('data') === book.getAttribute('data')) {
+                myLibrary.splice(book.getAttribute('data'), 1, '');
                 book.remove();
                 return;
             }
         });
     });
-});
+}

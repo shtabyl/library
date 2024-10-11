@@ -22,7 +22,7 @@
 }
 .book-list__form {
     margin-bottom: 0.8em;
-    display: none;
+    /* display: none; */
 }
 .book-list-form__button {
     margin-right: 1em;
