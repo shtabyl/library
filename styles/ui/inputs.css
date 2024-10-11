@@ -13,10 +13,13 @@ input {
 input[type="checkbox"] {
     appearance: none;
     background-color: transparent;
-    border: 1px solid gray;
+    border: 1px solid #b1ad9c;
     height: 100%;
     cursor: pointer;
     transition: 0.3s;
+}
+input[type="checkbox"].book_status {
+    border: none;
 }
 input[type="checkbox"]:checked {
     border-color: var(--clr-text);

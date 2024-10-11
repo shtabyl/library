@@ -10,4 +10,5 @@
 .book_title {
     font-size: var(--fs-300);
     font-weight: 400;
+    align-self: center;
 }

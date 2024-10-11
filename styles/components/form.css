@@ -18,12 +18,8 @@
     display: grid;
     place-content: center;
     cursor: pointer;
-    color: rgb(150, 149, 149);
+    color: #b1ad9c;
     transition: 0.3s;
-    &:hover {
-        color: rgb(177, 173, 156);
-        transition: 0.3s;
-    }
 }
 .input-box_reset {
     justify-self: end;

@@ -4,6 +4,10 @@ const showFormBtn = document.querySelector('.header__button');
 const newBookForm = document.querySelector('.book-list__form');
 const addBookBtn = document.querySelector('.book-list-form__button');
 const inputFields = document.querySelectorAll('.new-book-input');
+const statusInput = document.querySelector('#new-book_status');
+const newBookStatusLabel = document.querySelector('.new-book-status__label');
+const bookStatusBtns = document.querySelectorAll('.book_status');
+
 let bookItems = document.querySelectorAll('.book-item');
 
 
@@ -40,19 +44,36 @@ function addBookToLibrary(newBook) {
             tableCell.appendChild(textContent);
             tableCell.classList.add(property);
             newBookRow.appendChild(tableCell);
-            if (tableCell.textContent === 'false' || tableCell.textContent === '' || tableCell.textContent === '-' || tableCell.textContent === 'off' || tableCell.textContent === 'off') {
-                tableCell.textContent = '-';
-            } else if (tableCell.textContent === 'true' || tableCell.textContent === 'read' || tableCell.textContent === 'on') {
+            if (tableCell.textContent == 'false') {
+                tableCell.textContent = 'unread';
+                tableCell.style.color = 'var(--clr-gray)';
+            } else if (tableCell.textContent == 'true') {
                 tableCell.textContent = 'read';
             }
         }
-        
-        if (property === 'title') {
-            const tableCell = document.createElement('h3');
-            addTableCell(tableCell);
-        } else {
-            const tableCell = document.createElement('p');
-            addTableCell(tableCell);
+
+        switch(property) {
+            case 'book_title': {
+                const tableCell = document.createElement('h3');
+                addTableCell(tableCell);
+                break;
+            }
+            case 'book_author': {
+                const tableCell = document.createElement('p');
+                addTableCell(tableCell);
+                break;
+            }
+            case 'book_pages': {
+                const tableCell = document.createElement('p');
+                addTableCell(tableCell);
+                break;
+            }
+            case 'book_status': {
+                const tableCell = document.createElement('p');
+                addTableCell(tableCell);
+                changeStatusListener(tableCell);
+                break;
+            }
         }
     }
 
@@ -68,8 +89,7 @@ function addBookToLibrary(newBook) {
 
     bookItems = document.querySelectorAll('.book-item');
 
-    removeBook(removeBookBtn);
-
+    removeBookListener(removeBookBtn);
 
 }
 
@@ -95,7 +115,16 @@ addBookBtn.addEventListener('click', (e) => {
     const newBookTitle = document.querySelector('#new-book_title').value;
     const newBookAuthor = document.querySelector('#new-book_author').value;
     const newBookPages = document.querySelector('#new-book_pages').value;
-    const newBookStatus = document.querySelector('#new-book_status').value;
+    const newBookStatusCheck = document.querySelector('#new-book_status');
+    
+    let newBookStatus;
+
+    if (newBookStatusCheck.checked) {
+        newBookStatus = true;
+    } else {
+        newBookStatus = false;
+    }
+
     const newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookStatus);
 
     if (newBookTitle === '' || newBookAuthor === '' || newBookPages === '') {
@@ -109,9 +138,11 @@ addBookBtn.addEventListener('click', (e) => {
         newBookForm.appendChild(formNotification);
         return;
     }
+
     if (document.querySelector('.form-notification')) {
         document.querySelector('.form-notification').remove();
     }
+
     myLibrary.push(newBook);
     addBookToLibrary(newBook);
     newBookForm.reset();
@@ -126,8 +157,43 @@ inputFields.forEach((e) => {
     })
 });
 
+statusInput.addEventListener('change', (e) => {
+    if (e.currentTarget.checked) {
+        setTimeout(() => {
+            newBookStatusLabel.textContent = 'read';
+        }, 150);
+    } else {
+        setTimeout(() => {
+            newBookStatusLabel.textContent = 'unread';
+        }, 150);
+    }
+});
 
-function removeBook(removeBookBtn) {
+Book.prototype.changeStatus = function() {
+    if (this.book_status === true) {
+        this.book_status = false;
+    } else {
+        this.book_status = true;
+    }
+}
+
+
+function changeStatusListener(bookStatus) {
+    bookStatus.addEventListener('click', (e) => {
+        let index = e.target.parentElement.getAttribute('data');
+        myLibrary[index].changeStatus();
+        if (myLibrary[index].book_status === true) {
+            e.target.textContent = 'read';
+            e.target.style.color = 'var(--clr-text)';
+        } else {
+            e.target.textContent = 'unread';
+            e.target.style.color = 'var(--clr-gray)';
+        }
+    });
+}
+
+
+function removeBookListener(removeBookBtn) {
     removeBookBtn.addEventListener('click', (e) => {
         e.preventDefault();
         bookItems.forEach((book) => {

@@ -21,6 +21,7 @@
     --clr-border: #ffffff1a;
     --clr-text: #e1ca7e;
     --clr-bg: #0a6567;
+    --clr-gray: #b1ad9c;
 }
 body {
     font-family: var(--font-family);
