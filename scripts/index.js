@@ -8,6 +8,11 @@ const statusInput = document.querySelector('#new-book_status');
 const newBookStatusLabel = document.querySelector('.new-book-status__label');
 const bookStatusBtns = document.querySelectorAll('.book_status');
 
+const book1 = new Book('The Mysterious Island', 'J. Verne', 524, true);
+const book2 = new Book('The Art of Loving', 'E. Fromm', 104, true);
+const book3 = new Book('The Brothers Karamazov', 'F. Dostoevsky', 824, false);
+const book4 = new Book('Two lives', 'K. Antarova', 500, false);
+
 let bookItems = document.querySelectorAll('.book-item');
 
 
@@ -21,13 +26,13 @@ function Book(title, author, pages, read) {
     // }
 }
 
-
-const book1 = new Book('The Mysterious Island', 'J. Verne', 524, true);
-const book2 = new Book('The Art of Loving', 'E. Fromm', 104, true);
-const book3 = new Book('The Brothers Karamazov', 'F. Dostoevsky', 824, false);
-const book4 = new Book('Two lives', 'K. Antarova', 500, false);
-
-myLibrary.push(book1, book2, book3, book4);
+Book.prototype.changeStatus = function() {
+    if (this.book_status === true) {
+        this.book_status = false;
+    } else {
+        this.book_status = true;
+    }
+}
 
 
 function addBookToLibrary(newBook) {
@@ -90,12 +95,38 @@ function addBookToLibrary(newBook) {
     bookItems = document.querySelectorAll('.book-item');
 
     removeBookListener(removeBookBtn);
+}
 
+function changeStatusListener(bookStatus) {
+    bookStatus.addEventListener('click', (e) => {
+        let index = e.target.parentElement.getAttribute('data');
+        myLibrary[index].changeStatus();
+        if (myLibrary[index].book_status === true) {
+            e.target.textContent = 'read';
+            e.target.style.color = 'var(--clr-text)';
+        } else {
+            e.target.textContent = 'unread';
+            e.target.style.color = 'var(--clr-gray)';
+        }
+    });
 }
 
 
-myLibrary.forEach((e) => addBookToLibrary(e));
+function removeBookListener(removeBookBtn) {
+    removeBookBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        bookItems.forEach((book) => {
+            if (removeBookBtn.getAttribute('data') === book.getAttribute('data')) {
+                myLibrary.splice(book.getAttribute('data'), 1, '');
+                book.remove();
+                return;
+            }
+        });
+    });
+}
 
+myLibrary.push(book1, book2, book3, book4);
+myLibrary.forEach((e) => addBookToLibrary(e));
 
 showFormBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -168,40 +199,3 @@ statusInput.addEventListener('change', (e) => {
         }, 150);
     }
 });
-
-Book.prototype.changeStatus = function() {
-    if (this.book_status === true) {
-        this.book_status = false;
-    } else {
-        this.book_status = true;
-    }
-}
-
-
-function changeStatusListener(bookStatus) {
-    bookStatus.addEventListener('click', (e) => {
-        let index = e.target.parentElement.getAttribute('data');
-        myLibrary[index].changeStatus();
-        if (myLibrary[index].book_status === true) {
-            e.target.textContent = 'read';
-            e.target.style.color = 'var(--clr-text)';
-        } else {
-            e.target.textContent = 'unread';
-            e.target.style.color = 'var(--clr-gray)';
-        }
-    });
-}
-
-
-function removeBookListener(removeBookBtn) {
-    removeBookBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        bookItems.forEach((book) => {
-            if (removeBookBtn.getAttribute('data') === book.getAttribute('data')) {
-                myLibrary.splice(book.getAttribute('data'), 1, '');
-                book.remove();
-                return;
-            }
-        });
-    });
-}

@@ -27,7 +27,6 @@
         box-shadow: 0 0 0 2px rgba(225, 202, 126, 0.946);
     }
 }
-
 .button_remove {
     display: grid;
     place-content: center;
